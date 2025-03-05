@@ -4,7 +4,7 @@
 #define PADDING 5
 
 
-
+void populateList(LinkedList& list, const juce::String &text);
 
 //==============================================================================
 MainComponent::MainComponent()
@@ -76,18 +76,23 @@ void MainComponent::resized()
 
 void MainComponent::reverseInput()
 {
-    // parse string input
-    juce::StringArray tokens;
-    LinkedList list;
-
-    tokens.addTokens(listInput.getText(), ",", "\"");
-
     // convert to linked list
+    LinkedList list;
+    populateList(list, listInput.getText());
 
-    for (int i = 0; i < tokens.size(); i++) 
+    // reverse the linked list
+    list.reverse();
+
+    // output it 
+    listOutput.setText(list.toString());
+}
+
+void populateList(LinkedList& list, const juce::String &text)
+{
+    juce::StringArray tokens;
+    tokens.addTokens(text, ",", "\"");
+    for (int i = 0; i < tokens.size(); i++)
     {
         list.add(tokens.getReference(i).getIntValue());
     }
-
-    listOutput.setText(list.toString());
 }

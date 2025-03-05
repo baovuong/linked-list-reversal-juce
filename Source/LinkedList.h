@@ -38,6 +38,7 @@ public:
     bool isEmpty();
     void size();
     void add(int value);
+    void reverse();
 
 };
 

@@ -85,4 +85,22 @@ void LinkedList::add(int value)
     current->next->value = value;
 }
 
+void LinkedList::reverse()
+{
+    LinkedListNode *current, *next, *prev;
+
+    prev = nullptr;
+
+    current = first;
+    
+    while (current != nullptr) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    first = prev;
+}
+
 
