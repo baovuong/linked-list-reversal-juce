@@ -24,6 +24,8 @@ LinkedListNode::LinkedListNode()
 
 LinkedListNode::~LinkedListNode()
 {
+    if (next != nullptr)
+        delete next;
 }
 
 LinkedList::LinkedList()
@@ -33,16 +35,8 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
-    // deallocate every node
-    LinkedListNode* current = first;
-    LinkedListNode* prev;
-
-    while (current->next != nullptr)
-    {
-        prev = current;
-        current = current->next;
-        delete prev;
-    }
+    if (first != nullptr)
+        delete first;
 }
 
 juce::String LinkedList::toString()
@@ -79,7 +73,6 @@ void LinkedList::add(int value)
     {
         first = new LinkedListNode();
         first->value = value;
-        first->next = nullptr;
         return;
     }
 
