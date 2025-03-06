@@ -43,16 +43,11 @@ MainComponent::~MainComponent()
 //==============================================================================
 void MainComponent::paint (juce::Graphics& g)
 {
-
-
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
 
     g.setFont (juce::FontOptions (16.0f));
     g.setColour (juce::Colours::white);
-    g.drawText ("Hello World: " + juce::String(getLocalBounds().getWidth()) + ", " + juce::String(getLocalBounds().getHeight()), getLocalBounds(), juce::Justification::centred, true);
-
-
 }
 
 void MainComponent::resized()
@@ -64,14 +59,20 @@ void MainComponent::resized()
     auto listInputLabelWidth = 250;
     auto listInputLabelHeight = 40;
     auto listOutputLabelWidth = 50;
+
     listInput.setBounds(area.removeFromTop(listInputLabelHeight)
-        .removeFromRight(area.getWidth()-listInputLabelWidth));
+        .removeFromRight(area.getWidth()-listInputLabelWidth)
+        .reduced(PADDING));
 
     listOutput.setBounds(area.removeFromBottom(listInputLabelHeight)
-        .removeFromRight(area.getWidth() - listOutputLabelWidth));
+        .removeFromRight(area.getWidth() - listOutputLabelWidth)
+        .reduced(PADDING));
 
-    reverseButton.setBounds(area.removeFromLeft(area.getWidth() / 2).removeFromBottom(listInputLabelHeight));
-    sortButton.setBounds(area.removeFromRight(area.getWidth() / 2).removeFromBottom(listInputLabelHeight));
+    reverseButton.setBounds(area.removeFromLeft(area.getWidth() / 2)
+        .reduced(PADDING*5));
+
+    sortButton.setBounds(area
+        .reduced(PADDING*5));
 }
 
 void MainComponent::reverseInput()
