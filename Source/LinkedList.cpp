@@ -103,4 +103,9 @@ void LinkedList::reverse()
     first = prev;
 }
 
+void LinkedList::sort()
+{
+    // merge sort let's go 
+}
+
 

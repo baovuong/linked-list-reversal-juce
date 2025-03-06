@@ -9,6 +9,9 @@ void populateList(LinkedList& list, const juce::String &text);
 //==============================================================================
 MainComponent::MainComponent()
 {
+    // look and feel
+    setLookAndFeel(&bvLookAndFeel);
+
     // define gui components
     //listInput.setColour(juce::Label::backgroundColourId, juce::Colours::black);
     listInput.setJustification(juce::Justification::verticallyCentred);
@@ -38,6 +41,7 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
+    setLookAndFeel(nullptr);
 }
 
 //==============================================================================

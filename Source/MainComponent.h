@@ -2,6 +2,8 @@
 
 #include <JuceHeader.h>
 
+#include "BVLookAndFeel.h"
+
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -23,6 +25,9 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
+
+    BVLookAndFeel bvLookAndFeel;
+
     juce::Label listInputLabel;
     juce::TextEditor listInput;
     juce::Label listOutputLabel;

@@ -39,6 +39,7 @@ public:
     void size();
     void add(int value);
     void reverse();
+    void sort();
 
 };
 
